@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <title>Business Tarife und Produkte | Telekom Geschäftskunden</title>
-    <link rel="preload" href="TeleNeoVariableWeb-Upright.988f42b2.woff2" as="font" crossorigin>
-    <link rel="preload" href="TeleNeoVariableWeb-Italic.1853113f.woff2" as="font" crossorigin>
-  <script type="module" crossorigin src="./assets/index.de048e99.js"></script>
-  <link rel="modulepreload" href="./assets/vendor.7d022e38.js">
-  <link rel="stylesheet" href="./assets/index.77b12ce2.css">
+    <link href="TeleNeoVariableWeb-Upright.988f42b2.woff2" as="font" crossorigin>
+    <link href="TeleNeoVariableWeb-Italic.1853113f.woff2" as="font" crossorigin>
+  <script type="module" crossorigin src="./assets/index.a87abb08.js"></script>
+  <link rel="modulepreload" href="./assets/vendor.1efcff7d.js">
+  <link rel="stylesheet" href="./assets/index.58e27519.css">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
             <div class="c-header__bar">
                 <div class="c-brandbar c-brandbar--default l-container">
                     <div class="c-brandbar__inner l-container__item l-flex-align l-flex-positioning--space-between">
-                        <div class="c-brandbar__brand l-flex-align"><a href="/" data-tealium-rel="navi-top.image.home" title="Home" aria-label="Home" class="c-brandbar__logo"><span class="c-icon "><svg viewBox="0 0 75.7 37.2"
+                        <div class="c-brandbar__brand l-flex-align"><a href="/neural-search-demo/" data-tealium-rel="navi-top.image.home" title="Home" aria-label="Home" class="c-brandbar__logo"><span class="c-icon "><svg viewBox="0 0 75.7 37.2"
                     xmlns="http://www.w3.org/2000/svg">
                     <title>Telekom Geschäftskunden</title>
                     <path d="M0,24.6V17.1H7.5v7.5H0Z" class="cls-1"></path>
@@ -812,7 +812,7 @@
                             </nav>
                         </div>
                         <ul class="c-toolbox">
-                            <li class="c-toolbox__item"><button class="c-search-trigger c-toolbox__button"><span
+                            <li class="c-toolbox__item"><button class="js-header-search-trigger c-toolbox__button"><span
                     class="c-toolbox__link-icon "><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M21.4 19.6l-4.9-4.9a8.02 8.02 0 001.55-4.7c0-4.4-3.6-8-8-8S2 5.6 2 10s3.6 8 8 8c1.75 0 3.4-.55 4.7-1.55l4.9 4.9c.5.5 1.3.5 1.75 0 .5-.45.5-1.25.05-1.75zM3.5 10c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5-2.9 6.5-6.5 6.5-6.5-2.9-6.5-6.5z"
@@ -1061,7 +1061,7 @@
                 <div class=" l-container l-page-decoration l-page-decoration--bg-color-white l-page-decoration--gap-large l-page-decoration--successor-gap-large ">
                     <section class="l-container__item ">
                         <form>
-                            <div class="c-input-wrap c-search-trigger"><input type="search" placeholder="Suchen nach ..." aria-label="Suche" class="c-input c-input--search-bar u-font-size--20"><span class="c-input-wrap__controls is-positioned-right l-item-list"><button type="button" name="button"
+                            <div class="c-input-wrap js-search-trigger"><input type="search" placeholder="Suchen nach ..." aria-label="Suche" class="c-input c-input--search-bar u-font-size--20"><span class="c-input-wrap__controls is-positioned-right l-item-list"><button type="button" name="button"
                   class="l-item-list__item u-color--blue u-font-size--18"><span><span
                       class="c-icon c-icon--block "><svg width="64" height="64" viewBox="0 0 64 64"
                         xmlns="http://www.w3.org/2000/svg">
@@ -1343,18 +1343,23 @@
     <div id="app" class="app"></div>
     <script>
         const app = document.getElementById("app");
-        const searchTriggers = document.getElementsByClassName("c-search-trigger");
+        const searchTriggers = document.getElementsByClassName("js-search-trigger")[0];
+        const searchHeaderTriggers = document.getElementsByClassName("js-header-search-trigger")[0];
+        const modal = document.getElementsByClassName("search-modal__body")[0];
 
-        for (let index = 0; index < searchTriggers.length; index++) {
-            console.log(searchTriggers[index])
-            searchTriggers[index].onclick = function() {
-                app.classList.toggle("app-visible");
-                document.body.classList.toggle("overflow-hidden");
+        searchHeaderTriggers.onclick = () => toggleApp(isHeaderTarget = true);
+
+        searchTriggers.onclick = () => toggleApp();
+
+        function toggleApp(isHeaderTarget = false) {
+            app.classList.toggle("app-visible");
+
+            if (isHeaderTarget) {
+                document.body.classList.toggle("app-active-aimation");
+                document.body.classList.toggle("app-active-header");
+            } else {
+                document.body.classList.toggle("app-active-body");
             }
-        }
-
-        function toggleApp() {
-
         }
     </script>
     
