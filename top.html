@@ -1355,7 +1355,10 @@
             app.classList.toggle("app-visible");
             document.body.classList.toggle("app-active-aimation");
             document.body.classList.toggle("app-active-header");
-            document.body.classList.toggle("app-active-modal-full-width");
+
+            if (!isHeaderTarget) {
+                document.body.classList.toggle("app-active-modal-full-width");
+            }
 
         }
     </script>
